@@ -43,6 +43,36 @@ document.getElementById('rightArrow').addEventListener('click', function () {
 // Initialisation carrousel premier element
 updateCarousel();
 
+// Sélection de l'élément qui contient les bullet points
+const bulletPointsContainer = document.querySelector('.dots');
 
+// Crée les bullet points 
+for (let i = 0; i < numberOfSlides; i++) {
+    const bulletPoint = document.createElement('div');
+    bulletPoint.classList.add('dot');
+    bulletPointsContainer.appendChild(bulletPoint);
+
+    // Ajout d'un écouteur d'événements pour changer d'image lorsqu'un bullet point est cliqué
+    bulletPoint.addEventListener('click', function () {
+        currentSlideIndex = i;
+        updateCarousel();
+        updateBulletPoints();
+    });
+}
+
+// Mise à jour de l'apparence des bullet points en fonction de l'image atuelle
+function updateBulletPoints() {
+    const bulletPoints = bulletPointsContainer.querySelectorAll('.dot');
+    bulletPoints.forEach((bulletPoint, index) => {
+        if (index === currentSlideIndex) {
+            bulletPoint.classList.add('dot_selected');
+        } else {
+            bulletPoint.classList.remove('dot_selected');
+        }
+    });
+}
+
+// lancement de la fonction pour initialiser l'apparence des bullet points
+updateBulletPoints();
 
 
