@@ -27,19 +27,20 @@ function updateCarousel() {
     document.querySelector('#banner p').innerHTML = currentSlide.tagLine;
 }
 
-// Event Listeners sur les fleches
+// Event Listeners sur les flèches
 document.getElementById('leftArrow').addEventListener('click', function () {
     console.log('Flèche gauche cliquée');
     currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
     updateCarousel();
+    updateBulletPoints(); // Ajout de la mise à jour des bullet points
 });
 
 document.getElementById('rightArrow').addEventListener('click', function () {
     console.log('Flèche droite cliquée');
     currentSlideIndex = (currentSlideIndex + 1) % slides.length;
     updateCarousel();
+    updateBulletPoints(); // Ajout de la mise à jour des bullet points
 });
-
 // Initialisation carrousel premier element
 updateCarousel();
 
